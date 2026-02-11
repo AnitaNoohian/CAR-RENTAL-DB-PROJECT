@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ client and "Edit Client" or "Add Client" }}</h2>
+
+<div class="mb-3">
+    <a href="/clients" class="btn btn-outline-secondary btn-sm">
+        ← Back to Clients List
+    </a>
+</div>
+
+<div class="card p-4 mt-3">
+    <form method="post">
+        <div class="row g-3">
+
+            <div class="col-md-6">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" value="{{ client[1] if client else '' }}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">National ID</label>
+                <input type="text" name="national_id" class="form-control" value="{{ client[2] if client else '' }}" required>
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Birthday</label>
+                <input type="date" name="birthday" class="form-control" value="{{ client[3]|string if client else '' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Registration Date</label>
+                <input type="date" name="registration_date" class="form-control" value="{{ client[4]|string if client else '' }}">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">City</label>
+                <input type="text" name="city" class="form-control" value="{{ client[5] if client else '' }}">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">Street</label>
+                <input type="text" name="street" class="form-control" value="{{ client[6] if client else '' }}">
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label">House Number</label>
+                <input type="text" name="house_number" class="form-control" value="{{ client[7] if client else '' }}">
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone_number" class="form-control" value="{{ client[8] if client else '' }}">
+            </div>
+
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">{{ client and "Update Client" or "Add Client" }}</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

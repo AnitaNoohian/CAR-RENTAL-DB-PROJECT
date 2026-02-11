@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Rents List</h2>
+
+<div class="mb-3">
+    <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+        ← Back to Dashboard
+    </a>
+</div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Car</th>
+            <th>Client</th>
+            <th>Employee</th>
+            <th>KM Start</th>
+            <th>Registeration date</th>
+            <th>Status</th>
+        </tr>
+     </thead>
+    <tbody>
+        {% for r in rents %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }} {{ r[3] }}</td>
+            <td>{{ r[4] }} {{ r[5] }}</td>
+            <td>{{ r[7] }}</td> 
+            <td>{{ r[6] }}</td>
+            <td>
+                {% if r[8] %}
+                    <a class="btn btn-sm btn-outline-dark"
+                    href="/receipts/view/{{ r[0] }}">
+                    View Receipt
+                    </a>
+                {% else %}
+                    <a class="btn btn-sm btn-dark"
+                    href="/rents/finish/{{ r[0] }}">
+                    Finish
+                    </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="/rents/add">Add Rent</a>
+{% endblock %}

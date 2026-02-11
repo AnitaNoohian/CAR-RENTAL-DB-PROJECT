@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>Clients List</h2>
+
+<div class="mb-3">
+    <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+        ← Back to Dashboard
+    </a>
+</div>
+
+<table class="table table-hover table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>National ID</th>
+            <th>Birthday</th>
+            <th>Registration Date</th>
+            <th>City</th>
+            <th>Street</th>
+            <th>House number</th>
+            <th>Phone number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in clients %}
+        <tr>
+            <td>{{ c[0] }}</td>
+            <td>{{ c[1] }}</td>
+            <td>{{ c[2] }}</td>
+            <td>{{ c[3] }}</td>
+            <td>{{ c[4] }}</td>
+            <td>{{ c[5] }}</td>
+            <td>{{ c[6] }}</td>
+            <td>{{ c[7] }}</td>
+            <td>{{ c[8] }}</td>
+            <td>
+                <a href="/clients/edit/{{ c[0] }}" class="btn btn-warning btn-sm">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="mt-3">
+    <a href="/clients/add" class="btn btn-primary">Add Client</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4">Dashboard</h2>
+
+    <div class="row text-center mb-4">
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Total Cars</h6>
+                    <h4>{{ total_cars or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Rented Cars</h6>
+                    <h4>{{ rented_cars or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Available Cars</h6>
+                    <h4>{{ available_cars or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h6>Total Clients</h6>
+                    <h4>{{ total_clients or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row text-center mb-5">
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6>Unpaid Receipts</h6>
+                    <h4>{{ unpaid_receipts or 0 }}</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h6>Total Money</h6>
+                    <h4>{{ total_money or 0 }} Toman</h4>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <h5 class="mb-3">Recent Rents</h5>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Car</th>
+                <th>Client</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rent in recent_rents %}
+            <tr>
+                <td>{{ rent[0] }}</td>
+                <td>{{ rent[1] }}</td>
+                <td>{{ rent[2] }}</td>
+                <td>{{ rent[3] }}</td>
+                <td>
+                    {% if rent[4] %}
+                        <span class="badge bg-dark">Ongoing</span>
+                    {% else %}
+                        <span class="badge bg-secondary">Completed</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No recent rents found</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Receipt Details</h2>
+
+<div class="card p-4 mt-3">
+
+    <p><strong>Total Days:</strong> {{ receipt[0] }}</p>
+    <p><strong>Daily Price:</strong> {{ receipt[1] }}</p>
+    <p><strong>Damage Fee:</strong> {{ receipt[2] }}</p>
+    <p><strong>Total Price:</strong> {{ receipt[3] }}</p>
+
+    <p>
+        <strong>Status:</strong>
+        {% if receipt[4] %}
+            Paid
+        {% else %}
+            Unpaid
+        {% endif %}
+    </p>
+
+</div>
+
+<div class="mt-3">
+    <a href="/rents" class="btn btn-outline-secondary">
+        Back to Rents
+    </a>
+</div>
+
+
+<a class="btn btn-secondary mt-3"
+   href="/receipts/edit/{{ request.view_args.rent_id }}">
+   Edit Receipt
+</a>
+
+{% endblock %}

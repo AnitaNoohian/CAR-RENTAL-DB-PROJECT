@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Edit Car</h2>
+
+<div class="card p-4">
+    <form method="post" class="row g-3">
+        <div class="col-md-4">
+            <label class="form-label">Car Name</label>
+            <input type="text" name="name" class="form-control" value="{{ car[1] }}" required>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Plate Number</label>
+            <input type="text" name="plate_number" class="form-control" value="{{ car[2] }}" required>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Color</label>
+            <input type="text" name="color" class="form-control" value="{{ car[3] or '' }}">
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Fuel Type</label>
+            <input type="text" name="fuel_type" class="form-control" value="{{ car[5] }}">
+        </div>
+        <div class="col-md-3">
+            <label class="form-label">Fuel Consumption</label>
+            <input type="text" name="fuel_consumption" class="form-control" value="{{ car[6] or '' }}">
+        </div>
+
+        <div class="col-12 mt-3">
+            <button class="btn btn-primary">Save Changes</button>
+            <a href="/cars/{{ car[0] }}" class="btn btn-secondary ms-2">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

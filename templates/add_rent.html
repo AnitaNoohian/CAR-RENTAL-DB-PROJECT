@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2 class="mb-4">New Rent</h2>
+
+<div class="row justify-content-center">
+    <div class="col-md-8">
+
+        <div class="card p-4 shadow-sm">
+            <form method="post">
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Car</label>
+                        <select name="car_id" class="form-select" required>
+                            {% for car in cars %}
+                                <option value="{{ car[0] }}" {% if selected_car_id == car[0] %}selected{% endif %}>
+                                    {{ car[1] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Client</label>
+                        <select name="client_id" class="form-select" required>
+                            <option value="" disabled selected>Select a client</option>
+                            {% for cl in clients %}
+                                <option value="{{ cl[0] }}">
+                                    {{ cl[1] }} {{ cl[2] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Employee</label>
+                        <select name="employee_id" class="form-select" required>
+                            <option value="" disabled selected>Select employee</option>
+                            {% for e in employees %}
+                                <option value="{{ e[0] }}">
+                                    {{ e[1] }} {{ e[2] }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">KM Start</label>
+                        <input
+                            type="number"
+                            name="km_start"
+                            class="form-control"
+                            placeholder="e.g. 45200"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2 mt-4">
+                    <a href="/rents" class="btn btn-outline-secondary">
+                        Cancel
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        Create Rent
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

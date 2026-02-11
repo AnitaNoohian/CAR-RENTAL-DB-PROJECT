@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Receipts List</h2>
+
+<div class="mb-3">
+    <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+        ← Back to Dashboard
+    </a>
+</div>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Car</th>
+            <th>Client</th>
+            <th>Employee</th>
+            <th>Daily Price</th>
+            <th>Total Days</th>
+            <th>Total Price</th>
+            <th>Damage Fee</th>
+            <th>Paid</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for r in receipts %}
+        <tr>
+            <td>{{ r[0] }}</td>
+            <td>{{ r[1] }}</td>
+            <td>{{ r[2] }} {{ r[3] }}</td>
+            <td>{{ r[4] }} {{ r[5] }}</td>
+            <td>{{ r[6] }}</td>
+            <td>{{ r[7] or 'N/A' }}</td>
+            <td>{{ r[8] or 'N/A' }}</td>
+            <td>{{ r[9] or 0 }}</td>
+            <td>
+                {% if r[10] %}
+                    <span class="badge bg-success">Yes</span>
+                {% else %}
+                    <span class="badge bg-warning">No</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Cars List</h2>
+
+<div class="mb-3">
+    <a href="/dashboard" class="btn btn-outline-secondary btn-sm">
+        ← Back to Dashboard
+    </a>
+</div>
+
+
+<div class="card p-3 mb-4">
+    <form method="post" action="/cars/add" class="row g-3">
+        <div class="col-md-4">
+            <input type="text" name="name" class="form-control" placeholder="Car Name" required>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="plate_number" class="form-control" placeholder="Plate Number" required>
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="color" class="form-control" placeholder="Color">
+        </div>
+        <div class="col-md-2">
+            <input type="text" name="fuel_type" class="form-control" placeholder="Fuel">
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="fuel_consumption" class="form-control" placeholder="Fuel Cons.">
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-primary">Add Car</button>
+        </div>
+    </form>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Plate</th>
+            <th>Color</th>
+            <th>Fuel type</th>
+            <th>Fuel Cons.</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for car in cars %}
+        <tr onclick="window.location='/cars/{{ car[0] }}'" style="cursor:pointer">
+            <td>{{ car[0] }}</td>
+            <td>{{ car[1] }}</td>
+            <td>{{ car[2] }}</td>
+            <td>{{ car[3] }}</td>
+            <td>{{ car[5] }}</td>
+            <td>{{ car[6] }}</td>
+
+            <td>
+                <a class="btn btn-sm btn-danger" href="/cars/delete/{{ car[0] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+     </tbody>
+</table>
+{% endblock %}

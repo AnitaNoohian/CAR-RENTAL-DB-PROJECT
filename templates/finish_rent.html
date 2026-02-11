@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Finish Rent</h2>
+
+<div class="card p-3 mt-3">
+    <form method="post">
+        <div class="mb-3">
+            <label>KM End</label>
+            <input type="number" name="km_end" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Daily Price</label>
+            <input type="number" name="daily_price" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Damage Fee</label>
+            <input type="number" name="damage_fee" class="form-control">
+        </div>
+        <button class="btn btn-primary">Finish</button>
+    </form>
+    <div class="mt-3">
+        <a href="/rents" class="btn btn-outline-secondary">
+            Cancel
+        </a>
+    </div>
+</div>
+
+{% endblock %}
