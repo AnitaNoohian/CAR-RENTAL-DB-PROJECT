@@ -148,7 +148,8 @@
     ├── app.py
     ├── db.py
     ├── requirements.txt
-    ├── venv/
+    ├── .gitignore
+    ├── procfile
     └── README.me
 
 
