@@ -1,16 +1,6 @@
 import psycopg2
 import os
 
-"""
-def get_db_connection():
-    return psycopg2.connect(
-        host="localhost",
-        database="CarRentalDB",   
-        user="postgres",         
-        password="Anet1383",
-        port=5432
-    )
-    """
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 conn = psycopg2.connect(DATABASE_URL, sslmode = 'require')
